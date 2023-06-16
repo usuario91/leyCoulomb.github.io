@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/stylo_formulas.css" >
+    <title>Coulomb</title>
+</head>
+<body>
+     <header class="header">
+        <div class="header_icons">
+            <a href="#" class="logo">FORCULEITOR</a>
+        </div>
+        <div class="header_icons2">
+            <b>Ley de Coulomb</b>
+            <button class="header_button">Materias</button>
+            <button class="header_button2">Leyes</button>
+        </div>
+
+    </header>
+    <div class="contenedorPadre">
+        <div class="container">
+            <main class="main">
+                <div class="question">
+                    <div class="bloque">
+                        <h3>¿Cuál es tu incognita?</h3>
+                        <div class="nose1">
+                            <label class="label" for="f">f</label><input type="radio" class="incog" id="f" name="incog">
+                            <label class="label" for="d">d</label><input type="radio" class="incog" id="d" name="incog">
+                            <label class="label" for="q1">q1</label><input type="radio" class="incog" id="q1" name="incog">
+                            <label class="label" for="q2">q2</label><input type="radio" class="incog" id="q2" name="incog">
+                            <label  class="label" for="q²">q²</label><input type="radio" class="incog" id="q²" name="incog">
+                        </div>
+                    </div>
+                    <div class="bloque">
+                        <h3>¿En qué sistema esta valorada la constante de coulmob?</h3>
+                        <div class="nose">
+                            <div class="nosek">
+                                <label  class="label" for="kSi">k = SI</label><input type="radio" class="incog" id="kSi" name="constante">
+                                <label  class="label" for="kCgs">k = CGS</label><input type="radio" class="incog" id="kCgs" name="constante">
+                            </div>
+                            <div class="noseNext">
+                                <button  class="header_button" type="submit" id="next">Next</button>
+                                <button class="header_button2" type="submit" id="reload">reiniciar</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <aside class="aside">
+                <div class="contenedor">
+                    <div id="datos">
+                        <p>Datos</p>
+                    </div>
+                    <div class="conten_prossedimiento">
+                        <div id="formula"></div>
+                        <div id="prosedimiento"></div>
+                    </div>
+                </div>
+            </aside>
+    </div>
+    </div>
+    
+    <script src="js/Coulomb.js"></script>  
+
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora de Fuerza Eléctrica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora de Fuerza Eléctrica</h1>
+  
+  <form id="formulario">
+    <label for="carga1">Carga eléctrica 1 (Coulomb):</label>
+    <input type="number" id="carga1" required step="any">
+    
+    <label for="carga2">Carga eléctrica 2 (Coulomb):</label>
+    <input type="number" id="carga2" required step="any">
+    
+    <label for="distancia">Distancia (metros):</label>
+    <input type="number" id="distancia" required step="any">
+    
+    <label for="sistema">Sistema de unidades:</label>
+    <select id="sistema">
+      <option value="SI">SI (N, m)</option>
+      <option value="CGS">CGS (dyn, cm)</option>
+    </select>
+    
+    <label for="unidad">Unidad de medida de Coulomb:</label>
+    <select id="unidad">
+      <option value="C">Coulomb</option>
+      <option value="mC">milicoulomb</option>
+      <option value="μC">microcoulomb</option>
+      <option value="nC">nanocoulomb</option>
+      <option value="pC">picocoulomb</option>
+    </select>
+    
+    <input type="submit" value="Calcular">
+  </form>
+  
+  <div id="resultado"></div>
+  
+  <script>
+    // Event listener para el formulario
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+      event.preventDefault(); // Evitar que se recargue la página
+      
+      var carga1 = parseFloat(document.getElementById("carga1").value);
+      var carga2 = parseFloat(document.getElementById("carga2").value);
+      var distancia = parseFloat(document.getElementById("distancia").value);
+      var sistema = document.getElementById("sistema").value;
+      var unidad = document.getElementById("unidad").value;
+      
+      var fuerza = calcularFuerza(carga1, carga2, distancia, sistema);
+      
+      // Mostrar el resultado
+      document.getElementById("resultado").innerText = "Fuerza eléctrica: " + fuerza + " " + unidad;
+    });
+    
+    // Función para calcular la fuerza eléctrica según la fórmula de Coulomb
+    function calcularFuerza(carga1, carga2, distancia, sistema) {
+      var k;
+
+      // Definición de constantes según el sistema de unidades
+      if (sistema === "SI") {
+        k = 8.99 * Math.pow(10, 9); // Constante de Coulomb en N m^2/C^2
+      } else if (sistema === "CGS") {
+        k = 9 * Math.pow(10, 9); // Constante de Coulomb en dyn cm^2/esu^2
+      } else {
+        console.log("Sistema de unidades no válido.");
+        return;
+      }
+
+      // Conversión de unidades
+      carga1 *= convertirUnidadCoulomb(sistema);
+      carga2 *= convertirUnidadCoulomb(sistema);
+      distancia *= convertirUnidadMetro(sistema);
+
+      // Cálculo de la fuerza eléctrica
+      var fuerza = (k * carga1 * carga2) / Math.pow(distancia, 2);
+
+      // Conversión de unidades
+      fuerza = convertirUnidadFuerza(fuerza, unidad);
+
+      return fuerza;
+    }
+
+    // Función para convertir unidades de carga eléctrica a Coulomb
+    function convertirUnidadCoulomb(sistema) {
+      var conversion;
+
+      switch (sistema) {
+        case "SI":
+          conversion = 1;
+          break;
+        case "CGS":
+          conversion = 1 / 2997924580; // Factor de conversión para convertir de esu a Coulomb
+          break;
+        default:
+          conversion = 1;
+          console.log("Sistema de unidades no válido.");
+          break;
+      }
+
+      return conversion;
+    }
+
+    // Función para convertir unidades de distancia a metro
+    function convertirUnidadMetro(sistema) {
+      var conversion;
+
+      switch (sistema) {
+        case "SI":
+          conversion = 1;
+          break;
+        case "CGS":
+          conversion = 0.01; // Factor de conversión para convertir de cm a metro
+          break;
+        default:
+          conversion = 1;
+          console.log("Sistema de unidades no válido.");
+          break;
+      }
+
+      return conversion;
+    }
+
+    // Función para convertir unidades de fuerza según la unidad de medida
+    function convertirUnidadFuerza(fuerza, unidad) {
+      switch (unidad) {
+        case "C":
+          return fuerza;
+        case "mC":
+          return fuerza * 1000; // Conversión a milicoulomb
+        case "μC":
+          return fuerza * 1000000; // Conversión a microcoulomb
+        case "nC":
+          return fuerza * 1000000000; // Conversión a nanocoulomb
+        case "pC":
+          return fuerza * 1000000000000; // Conversión a picocoulomb
+        default:
+          console.log("Unidad de medida no válida.");
+          return fuerza;
+      }
+    }
+  </script>
+</body>
+</html> -->
